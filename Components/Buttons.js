@@ -22,3 +22,11 @@ export const Btn = ({ currency, amount, type, }) => {
         </View>
     )
 }
+
+export const Meter = () => {
+    return (
+        <View>
+            
+        </View>
+    )
+}

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Dimensions, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Dimensions, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 import { CircleBtn, Btn } from '../Components/Buttons'
@@ -8,7 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const { width, height } = Dimensions.get('window')
 
 
-const DetailScreen = () => {
+const DetailScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#222831', paddingTop: 19 }}>
             <ScrollView style={styles.scrollView}>
@@ -16,7 +16,7 @@ const DetailScreen = () => {
                 <View style={styles.top}>
                     <View style={styles.icon}>
                         <AntDesign name="arrowleft" size={19} color="white" />
-                        <Text style={styles.txt}>My Profile</Text>
+                        <Text style={styles.txt}>My Wallet</Text>
                         <MaterialIcons name="bubble-chart" size={24} color="white" />
                     </View>
                 </View>
@@ -29,46 +29,53 @@ const DetailScreen = () => {
 
                 <View style={{ alignItems: 'center', width: width, paddingTop: 30 }}>
                     <View style={styles.btnContainer}>
-                        <View style={styles.btn}>
+                        <TouchableOpacity style={{ ...styles.btn, backgroundColor: '#00FA9A' }}>
                             <Btn
                                 currency='EUR'
                                 amount={195.45}
                                 type='Savings'
-                                style={{ backgroundColor: '#fff' }}
                             />
-                        </View>
-                        <View style={styles.btn}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ ...styles.btn, backgroundColor: '#4169E1' }}
+                        onPress={() => navigation.navigate('Transaction')}
+                        >
                             <Btn
                                 currency='USD'
                                 amount={999.21}
                                 type='Income'
                             />
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={{ ...styles.btnContainer, paddingTop: 5 }}>
-                        <View style={styles.btn}>
+                        <TouchableOpacity style={{ ...styles.btn, backgroundColor: '#FF7F50' }}>
                             <Btn
                                 currency='USD'
                                 amount={320.46}
                                 type='Expense'
                             />
-                        </View>
-                        <View style={styles.btn}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ ...styles.btn, backgroundColor: '#FFA500' }}>
                             <Btn
                                 currency='USD'
                                 amount={425.35}
                                 type='Expense'
                             />
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
                 <View style={styles.iconBtn}>
                     <View style={styles.bottom}>
+                        <TouchableOpacity>
                         <MaterialIcons name="house" size={24} color="white" />
-                        <AntDesign name="pluscircle" size={70} color="white" 
+                        </TouchableOpacity>
+                       <TouchableOpacity>
+                       <AntDesign name="pluscircle" size={70} color="white" 
                         style={{ bottom: 40}}/>
+                       </TouchableOpacity>
+                        <TouchableOpacity>
                         <AntDesign name="user" size={24} color="white" />
+                        </TouchableOpacity>
                     </View>
                 </View>
 
